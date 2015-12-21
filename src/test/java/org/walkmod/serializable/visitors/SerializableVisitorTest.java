@@ -30,4 +30,12 @@ public class SerializableVisitorTest extends SemanticTest {
 		ClassOrInterfaceDeclaration declaration = (ClassOrInterfaceDeclaration) cu.getTypes().get(0);
 		Assert.assertNotNull(declaration.getImplements());
 	}
+	
+	@Test
+	public void testWhenIsSerializableSubclass() throws Exception{
+		CompilationUnit cu = compile("public class Foo implements java.io.Serializable{}");
+		cu.accept(new SerializableVisitor<Object>(), null);
+		ClassOrInterfaceDeclaration declaration = (ClassOrInterfaceDeclaration) cu.getTypes().get(0);
+		Assert.assertEquals(1, declaration.getImplements().size());
+	}
 }
