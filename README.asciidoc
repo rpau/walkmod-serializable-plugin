@@ -29,29 +29,20 @@ public class Foo implements java.io.Serializable{
 
 == Usage
 
-. Add the https://github.com/rpau/walkmod-maven-plugin[walkmod-maven-plugin] into your `walkmod.xml` as a configuration provider. 
-This component will interpret your classpath accoding your `pom.xml` and will build your project.
 
-. Add the transformation `serializable` into your  `walkmod.xml`
+=== Only for walkmod >= 2.2.0
 
-```XML
-<!DOCTYPE walkmod PUBLIC "-//WALKMOD//DTD"  "http://www.walkmod.com/dtd/walkmod-1.1.dtd" >
-<walkmod>
- 
-  <conf-providers>
-    <conf-provider type="maven"></conf-provider>
-  </conf-providers>
-  <chain name="default"> 
-    <transformation type="serializable"/>
-  </chain>  
-</walkmod>
-```
+In order to add this code transformation as part of your code conventions, execute: 
 
-You can apply walkmod-serializable-plugin via walkmod. 
+----
+walkmod add serializable
+----
+
+And then you see the results executing the following command: 
 
   $ walkmod apply
 
-Or, you can also check which would be the modified classes typing:
+Or, alternativelt, you can also check which would be the modified classes typing:
 
   $ walkmod check
   
